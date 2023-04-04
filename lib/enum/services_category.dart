@@ -1,0 +1,4 @@
+enum ServicesCategory {
+  emlakci,
+  usta,
+}
