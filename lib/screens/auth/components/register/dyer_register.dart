@@ -67,12 +67,14 @@ class _DyerRegisterState extends State<DyerRegister> with TickerProviderStateMix
                 ),
               ],
             ),
-            Positioned(
-              top: (MediaQuery.of(context).size.width / 1.2) - (AppTheme.dPadding + 4),
-              bottom: 0,
-              left: 0,
-              right: 0,
+            SingleChildScrollView(
               child: Container(
+                padding: EdgeInsets.only(
+                  top: 10,
+                ),
+                margin: EdgeInsets.only(
+                  top: 80,
+                ),
                 decoration: BoxDecoration(
                   color: AppTheme.white,
                   borderRadius: const BorderRadius.only(
@@ -92,216 +94,204 @@ class _DyerRegisterState extends State<DyerRegister> with TickerProviderStateMix
                     left: AppTheme.dPadding - 12, 
                     right: AppTheme.dPadding - 12
                   ),
-                  child: Container(
-                    constraints: BoxConstraints(
-                      minHeight: infoHeight,
-                      maxHeight: tempHeight > infoHeight
-                        ? tempHeight
-                        : infoHeight
-                      ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        const Padding(
-                          padding: EdgeInsets.only(
-                            top: (AppTheme.dPadding * 2) - 8, 
-                            left: AppTheme.dPadding - 2, 
-                            right: AppTheme.dPadding - 4,
-                          ),
-                          child: Text(
-                            'Usta Başvurusu',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 24,
-                              letterSpacing: 0.27,
-                              color: AppTheme.darkerText,
+                  child: Column(
+                    
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: AppTheme.dPadding - 2, 
+                          right: AppTheme.dPadding - 4,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Usta Başvurusu',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 24,
+                                letterSpacing: 0.27,
+                                color: AppTheme.darkerText,
+                              ),
                             ),
+            
+                            SizedBox(
+                              width: 20,
+                            ),
+            
+                            Card(
+                              color: AppTheme.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(AppTheme.dPadding * 2 + 10),
+                              ),
+                              elevation: 10.0,
+                              child: Container(
+                                width: 60,
+                                height: 60,
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.app_registration,
+                                    color: AppTheme.white,
+                                    size: 30,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: AppTheme.dPadding - 4, 
+                          right: AppTheme.dPadding - 4, 
+                          bottom: AppTheme.dPadding - 12, 
+                          top: AppTheme.dPadding - 15,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const <Widget>[
+                            Text(
+                              'Şehrindeki Usta Sen Ol',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                                letterSpacing: 0.27,
+                                color: AppTheme.amber,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 500),
+                        opacity: opacity1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(AppTheme.dPadding - 12),
+                          child: Row(
+                            children: <Widget>[
+                              renderInfoUI('İş Modeli', '5 Adet'),
+                              renderInfoUI('MYK', 'Belgesi'),
+                              renderInfoUI('Bölge', '81 İl'),
+                            ],
                           ),
                         ),
-                        Padding(
+                      ),
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 500),
+                        opacity: opacity2,
+                        child: Padding(
                           padding: const EdgeInsets.only(
                             left: AppTheme.dPadding - 4, 
                             right: AppTheme.dPadding - 4, 
-                            bottom: AppTheme.dPadding - 12, 
-                            top: AppTheme.dPadding - 15,
+                            top: AppTheme.dPadding - 12, 
+                            bottom: AppTheme.dPadding - 12,
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const <Widget>[
-                              Text(
-                                'Şehrindeki Usta Sen Ol',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 18,
-                                  letterSpacing: 0.27,
-                                  color: AppTheme.amber,
+                          child: Column(
+                            children: [
+                              AppFormTextField(
+                                labelTextInfo: 'Lütfen Adınızı Ve Soyadınızı Giriniz', 
+                                hintTextInfo: 'Adınız Ve Soyadınız Nedir', 
+                                customIcon: Icon(
+                                  Icons.person,
+                                  color: Colors.amber,
                                 ),
+                              ), 
+                        
+                              AppFormTextField(
+                                hintTextInfo: 'Telefon Numranız Nedir ?', 
+                                labelTextInfo: 'Lütfen Telefon Numaranızı Giriniz',
+                                customIcon: Icon(
+                                  Icons.phone_android,
+                                  color: Colors.amber,
+                                ),
+                              ),  
+                         
+                              AppFormTextField(
+                                hintTextInfo: 'E-Posta Adresiniz Nedir ?', 
+                                labelTextInfo: 'Lütfen E-Posta Adresiniz Giriniz',
+                                customIcon: Icon(
+                                  Icons.mail,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                          
+                              AppFormDropDownButtonFormField(
+                                labelTextInfo: 'Lütfen Cinsiyetinizi Giriniz',
+                                hintTextInfo: 'Cinsiyetiniz Nedir',
+                                customIcon: Icon(
+                                  Icons.info,
+                                  color: Colors.amber,
+                                ),
+                                items: [
+                                  DropdownMenuItem(child: Text('Erkek'),value: 'Erkek'),
+                                  DropdownMenuItem(child: Text('Kadın'),value: 'Kadın'),
+                                  DropdownMenuItem(child: Text('Belirtmek İstemiyorum'),value: 'Belirtmek İstemiyorum'),
+                                ],
+                              ), 
+                          
+                              AppFormDropDownButtonFormField(
+                                labelTextInfo: 'Lütfen Usta Olduğunuz Alanları Giriniz',
+                                hintTextInfo: 'Usta Olduğunuz Alanlar',
+                                customIcon: Icon(
+                                  Icons.sixty_fps_select_sharp,
+                                  color: Colors.amber,
+                                ),
+                                items: [
+                                  DropdownMenuItem(child: Text('Boya'),value: 'Boya'),
+                                  DropdownMenuItem(child: Text('Alçı'),value: 'Alçı'),
+                                  DropdownMenuItem(child: Text('Tadilat'),value: 'Tadilat'),
+                                  DropdownMenuItem(child: Text('Doğrama Kapı'),value: 'Doğrama Kapı'),
+                                  DropdownMenuItem(child: Text('Hepsini Anlıyorum'),value: 'Hepsini Anlıyorum'),
+                                  DropdownMenuItem(child: Text('Kısmen Anlıyorum'),value: 'Kısmen Anlıyorum'),
+                                  DropdownMenuItem(child: Text('Kadın Boya Ustası'),value: 'Kadın Boya Ustası'),
+                                ],
+                              ), 
+                          
+                              AppFormTextField(
+                                labelTextInfo: 'Lütfen MYK Belge Numranızı Giriniz',
+                                hintTextInfo: 'MYK Belge Numranız', 
+                                customIcon: Icon(
+                                  Icons.document_scanner,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                          
+                              AppFormTextArea(
+                                labelTextInfo: 'Öz Geçmişinizi Anlatın',
+                                hintTextInfo: 'Lütfen Öz Geçmişinizi Anlatın',
+                                customIcon: Icon(
+                                  Icons.edit_document,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                       
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  AppFormButton(
+                                    width: screenWidth * 0.4,
+                                    fontWeightTitle: FontWeight.w600,
+                                    fontSizeTitle: 18,
+                                    buttonTitle: 'İptal'
+                                  ),
+                                  AppFormButton(
+                                    width: screenWidth * 0.4,
+                                    fontWeightTitle: FontWeight.w600,
+                                    fontSizeTitle: 18,
+                                    buttonTitle: 'Kaydet'
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ),
-                        AnimatedOpacity(
-                          duration: const Duration(milliseconds: 500),
-                          opacity: opacity1,
-                          child: Padding(
-                            padding: const EdgeInsets.all(AppTheme.dPadding - 12),
-                            child: Row(
-                              children: <Widget>[
-                                renderInfoUI('İş Modeli', '5 Adet'),
-                                renderInfoUI('MYK', 'Belgesi'),
-                                renderInfoUI('Bölge', '81 İl'),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: AnimatedOpacity(
-                              duration: const Duration(milliseconds: 500),
-                              opacity: opacity2,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  left: AppTheme.dPadding - 4, 
-                                  right: AppTheme.dPadding - 4, 
-                                  top: AppTheme.dPadding - 12, 
-                                  bottom: AppTheme.dPadding - 12,
-                                ),
-                                child: Column(
-                                  children: [
-                                    AppFormTextField(
-                                      labelTextInfo: 'Lütfen Adınızı Ve Soyadınızı Giriniz', 
-                                      hintTextInfo: 'Adınız Ve Soyadınız Nedir', 
-                                      customIcon: Icon(
-                                        Icons.person,
-                                        color: Colors.amber,
-                                      ),
-                                    ), 
-                              
-                                    AppFormTextField(
-                                      hintTextInfo: 'Telefon Numranız Nedir ?', 
-                                      labelTextInfo: 'Lütfen Telefon Numaranızı Giriniz',
-                                      customIcon: Icon(
-                                        Icons.phone_android,
-                                        color: Colors.amber,
-                                      ),
-                                    ),  
-                               
-                                    AppFormTextField(
-                                      hintTextInfo: 'E-Posta Adresiniz Nedir ?', 
-                                      labelTextInfo: 'Lütfen E-Posta Adresiniz Giriniz',
-                                      customIcon: Icon(
-                                        Icons.mail,
-                                        color: Colors.amber,
-                                      ),
-                                    ),
-
-                                    AppFormDropDownButtonFormField(
-                                      labelTextInfo: 'Lütfen Cinsiyetinizi Giriniz',
-                                      hintTextInfo: 'Cinsiyetiniz Nedir',
-                                      customIcon: Icon(
-                                        Icons.info,
-                                        color: Colors.amber,
-                                      ),
-                                      items: [
-                                        DropdownMenuItem(child: Text('Erkek'),value: 'Erkek'),
-                                        DropdownMenuItem(child: Text('Kadın'),value: 'Kadın'),
-                                        DropdownMenuItem(child: Text('Belirtmek İstemiyorum'),value: 'Belirtmek İstemiyorum'),
-                                      ],
-                                    ), 
-
-                                    AppFormDropDownButtonFormField(
-                                      labelTextInfo: 'Lütfen Usta Olduğunuz Alanları Giriniz',
-                                      hintTextInfo: 'Usta Olduğunuz Alanlar',
-                                      customIcon: Icon(
-                                        Icons.sixty_fps_select_sharp,
-                                        color: Colors.amber,
-                                      ),
-                                      items: [
-                                        DropdownMenuItem(child: Text('Boya'),value: 'Boya'),
-                                        DropdownMenuItem(child: Text('Alçı'),value: 'Alçı'),
-                                        DropdownMenuItem(child: Text('Tadilat'),value: 'Tadilat'),
-                                        DropdownMenuItem(child: Text('Doğrama Kapı'),value: 'Doğrama Kapı'),
-                                        DropdownMenuItem(child: Text('Hepsini Anlıyorum'),value: 'Hepsini Anlıyorum'),
-                                        DropdownMenuItem(child: Text('Kısmen Anlıyorum'),value: 'Kısmen Anlıyorum'),
-                                        DropdownMenuItem(child: Text('Kadın Boya Ustası'),value: 'Kadın Boya Ustası'),
-                                      ],
-                                    ), 
-                                
-                                    AppFormTextField(
-                                      labelTextInfo: 'Lütfen MYK Belge Numranızı Giriniz',
-                                      hintTextInfo: 'MYK Belge Numranız', 
-                                      customIcon: Icon(
-                                        Icons.document_scanner,
-                                        color: Colors.amber,
-                                      ),
-                                    ),
-
-                                    AppFormTextArea(
-                                      labelTextInfo: 'Öz Geçmişinizi Anlatın',
-                                      hintTextInfo: 'Lütfen Öz Geçmişinizi Anlatın',
-                                      customIcon: Icon(
-                                        Icons.edit_document,
-                                        color: Colors.amber,
-                                      ),
-                                    ),
-                           
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        AppFormButton(
-                                          width: screenWidth * 0.4,
-                                          fontWeightTitle: FontWeight.w600,
-                                          fontSizeTitle: 18,
-                                          buttonTitle: 'İptal'
-                                        ),
-                                        AppFormButton(
-                                          width: screenWidth * 0.4,
-                                          fontWeightTitle: FontWeight.w600,
-                                          fontSizeTitle: 18,
-                                          buttonTitle: 'Kaydet'
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: MediaQuery.of(context).padding.bottom)
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: (MediaQuery.of(context).size.width / 1.2) - (AppTheme.dPadding + 4) - (AppTheme.dPadding + 15),
-              right: 35,
-              child: ScaleTransition(
-                alignment: Alignment.center,
-                scale: CurvedAnimation(parent: animationController!, curve: Curves.fastOutSlowIn),
-                child: Card(
-                  color: AppTheme.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppTheme.dPadding * 2 + 10),
-                  ),
-                  elevation: 10.0,
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    child: const Center(
-                      child: Icon(
-                        Icons.app_registration,
-                        color: AppTheme.white,
-                        size: 30,
                       ),
-                    ),
+                      
+                    ],
                   ),
                 ),
               ),
@@ -325,7 +315,8 @@ class _DyerRegisterState extends State<DyerRegister> with TickerProviderStateMix
                   ),
                 ),
               ),
-            )
+            ),
+            
           ],
         ),
       ),

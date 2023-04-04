@@ -93,98 +93,95 @@ class CategoryView extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return FadeTransition(
           opacity: animation!,
-          child: Transform(
-            transform: Matrix4.translationValues(0.0, 50 * (1.0 - animation!.value), 0.0),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              onTap: callback,
-              child: SizedBox(
-                height: 280,
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomCenter,
-                  children: <Widget>[
-                    Container(
-                      child: Column(
-                        children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.amber,
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(AppTheme.dPadding - 4)
-                                ),
-                                border: Border.all(color: AppTheme.black,width: 1),
+          child: InkWell(
+            splashColor: Colors.transparent,
+            onTap: callback,
+            child: SizedBox(
+              height: 280,
+              child: Stack(
+                alignment: AlignmentDirectional.bottomCenter,
+                children: <Widget>[
+                  Container(
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppTheme.amber,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(AppTheme.dPadding - 4)
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      child: Column(
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              top: AppTheme.dPadding - 4, 
-                                              left: AppTheme.dPadding - 4, 
-                                              right: AppTheme.dPadding - 4
-                                            ),
-                                            child: Text(
-                                              category!.title,
-                                              textAlign: TextAlign.center,
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 18,
-                                                letterSpacing: 0.27,
-                                                color: AppTheme.black,
-                                              ),
+                              border: Border.all(color: AppTheme.black,width: 1),
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    child: Column(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: AppTheme.dPadding - 4, 
+                                            left: AppTheme.dPadding - 4, 
+                                            right: AppTheme.dPadding - 4
+                                          ),
+                                          child: Text(
+                                            category!.title,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 18,
+                                              letterSpacing: 0.27,
+                                              color: AppTheme.black,
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  const SizedBox(width: 48),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 48),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: AppTheme.dPadding + 4, 
-                          right: AppTheme.dPadding - 4, 
-                          left: AppTheme.dPadding - 4,
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(AppTheme.dPadding - 4)
-                            ),
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                color: AppTheme.grey.withOpacity(0.2),
-                                spreadRadius: 1,
-                                blurRadius: 15
-                              ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(AppTheme.dPadding - 4)
-                            ),
-                            child: AspectRatio(
-                              aspectRatio: 1.28,
-                              child: Image.asset(category!.imagePath)
+                                ),
+                                const SizedBox(width: 48),
+                              ],
                             ),
                           ),
                         ),
+                        const SizedBox(height: 48),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: AppTheme.dPadding + 4, 
+                        right: AppTheme.dPadding - 4, 
+                        left: AppTheme.dPadding - 4,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(AppTheme.dPadding - 4)
+                          ),
+                          boxShadow: <BoxShadow>[
+                            BoxShadow(
+                              color: AppTheme.grey.withOpacity(0.2),
+                              spreadRadius: 1,
+                              blurRadius: 15
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(AppTheme.dPadding - 4)
+                          ),
+                          child: AspectRatio(
+                            aspectRatio: 1.28,
+                            child: Image.asset(category!.imagePath)
+                          ),
+                        ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
