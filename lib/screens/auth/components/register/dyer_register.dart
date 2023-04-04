@@ -58,6 +58,7 @@ class _DyerRegisterState extends State<DyerRegister> with TickerProviderStateMix
           children: <Widget>[
             Column(
               children: <Widget>[
+                
                 AspectRatio(
                   aspectRatio: 1.2,
                   child: Image.asset(
@@ -65,8 +66,10 @@ class _DyerRegisterState extends State<DyerRegister> with TickerProviderStateMix
                     fit: BoxFit.cover
                   ),
                 ),
+                
               ],
             ),
+            
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
@@ -97,6 +100,7 @@ class _DyerRegisterState extends State<DyerRegister> with TickerProviderStateMix
                   child: Column(
                     
                     children: <Widget>[
+
                       Padding(
                         padding: const EdgeInsets.only(
                           left: AppTheme.dPadding - 2, 
