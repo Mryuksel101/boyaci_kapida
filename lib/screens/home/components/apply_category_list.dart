@@ -38,6 +38,12 @@ class _ApplyCategoryListState extends State<ApplyCategoryList> with TickerProvid
               padding: const EdgeInsets.all(AppTheme.dPadding - 12),
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.vertical,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 32.0,
+                crossAxisSpacing: 32.0,
+                childAspectRatio: 0.8,
+              ),
               children: List<Widget>.generate(
                 Category.applyCategoryList.length,
                 (int index) {
@@ -57,12 +63,6 @@ class _ApplyCategoryListState extends State<ApplyCategoryList> with TickerProvid
                     animationController: animationController,
                   );
                 },
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 32.0,
-                crossAxisSpacing: 32.0,
-                childAspectRatio: 0.8,
               ),
             );
           }
