@@ -92,7 +92,7 @@ class AppFormTextField extends StatelessWidget {
       padding: const EdgeInsets.only(top: AppTheme.dPadding - 5),
       child: TextField(
         decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(AppTheme.dPadding / 2),
             ),
@@ -100,7 +100,7 @@ class AppFormTextField extends StatelessWidget {
               color: AppTheme.black
             ),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(AppTheme.dPadding / 2),
             ),
@@ -109,19 +109,19 @@ class AppFormTextField extends StatelessWidget {
             ),
           ),
           hintText: hintTextInfo,
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             color: AppTheme.amber,
             fontSize: 17,
             fontWeight: FontWeight.w400
           ),
           labelText: labelTextInfo,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             color: AppTheme.black,
             fontSize: 17,
             fontWeight: FontWeight.w400
           ),
           prefixIcon: customIcon,
-          suffixStyle: TextStyle(
+          suffixStyle: const TextStyle(
             color: AppTheme.black
           ),
         ),
